@@ -12,7 +12,8 @@ install:
   - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%
 
   # Install Python package 'requests'
-  - cmd: pip install --user requests==2.1.0
+  - cmd: apt install python3.9
+  - cmd: pip install requests
   - cmd: pip list
 
 build_script:
