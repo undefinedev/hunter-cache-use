@@ -32,10 +32,10 @@ set(
 
 include(cmake/HunterGate.cmake)
 HunterGate(
-        URL "https://github.com/cpp-pm/hunter/archive/v0.23.314.tar.gz"
-        SHA1 "95c47c92f68edb091b5d6d18924baabe02a6962a"
+        URL "https://github.com/cpp-pm/hunter/archive/v0.24.1.tar.gz"
+        SHA1 "4942227a6e6f5e64414c55b97ef98609de199d18"
 )
 
 project(foo)
 
-hunter_add_package(GTest)
+hunter_add_package(sugar)
