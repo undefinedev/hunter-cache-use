@@ -38,4 +38,4 @@ HunterGate(
 
 project(foo)
 
-hunter_add_package(sugar)
+hunter_add_package(GTest)
