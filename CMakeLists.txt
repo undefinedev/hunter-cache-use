@@ -1,4 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
+#set(CMAKE_C_COMPILER "C:/msys64/mingw64/bin/cc.exe")
+#set(CMAKE_CXX_COMPILER "C:/msys64/mingw64/bin/c++.exe")
+#set(CMAKE_MAKE_PROGRAM "C:/Program Files/JetBrains/CLion 2021.2.1/bin/ninja/win/ninja.exe")
 
 set(
         HUNTER_CACHE_SERVERS

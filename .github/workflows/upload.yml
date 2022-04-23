@@ -1,0 +1,28 @@
+name: Upload
+on: [push]
+
+jobs:
+  build:
+    name: hunter
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: prepare environment
+        run: sudo apt install git &&
+             git submodule update --init
+
+      - name: python
+        run: |
+          set PATH=C:\Python310-x64;C:\Python310-x64\Scripts;%PATH%
+          pip install --upgrade pip
+          pip install requests
+          pip list
+
+      - name: upload
+        run: |
+          cmake -H. -B_builds -DHUNTER_STATUS_DEBUG=ON -DHUNTER_CONFIGURATION_TYPES=%TYPE%
+          cmake --build _builds --config %TYPE%
+        with:
+          GITHUB_USER_PASSWORD: qGJ+1HNJV6ui0bH1F7bZ1f+bmXPesdzGa2iWclyohd3O9jwyRwbh63wfl0i/prS6
