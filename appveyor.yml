@@ -12,10 +12,9 @@ install:
   - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%
 
   # Install Python package 'requests'
-  - cmd: pip install requests
+  - cmd: sudo pip3 install requests
 
 build_script:
-  - cmd: pip install requests
   - cmd: cmake -H. -B_builds -DHUNTER_STATUS_DEBUG=ON -DHUNTER_CONFIGURATION_TYPES=%TYPE%
   - cmd: cmake --build _builds --config %TYPE%
 
