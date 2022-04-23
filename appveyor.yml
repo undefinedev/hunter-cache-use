@@ -9,10 +9,10 @@ environment:
 
 install:
   # Python 3
-  - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%
+  - cmd: set PATH=C:\Python310-x64;C:\Python310-x64\Scripts;%PATH%
 
   # Install Python package 'requests'
-  - cmd: apt install python3.9
+  - cmd: python --version
   - cmd: pip install requests
   - cmd: pip list
 
