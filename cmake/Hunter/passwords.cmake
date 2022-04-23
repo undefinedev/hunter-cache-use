@@ -7,5 +7,5 @@ hunter_upload_password(
         USERNAME "defineddev"
 
         # PASSWORD = GitHub token saved as a secure environment variable
-        PASSWORD "GITHUB_USER_PASSWORD"
+        PASSWORD "$ENV{GITHUB_USER_PASSWORD}"
 )
