@@ -25,6 +25,8 @@ if(NOT password_is_empty)
     option(HUNTER_RUN_UPLOAD "Upload cache binaries" ON)
 endif()
 
+option(HUNTER_RUN_UPLOAD "Upload cache binaries" ON)
+
 set(
         HUNTER_PASSWORDS_PATH
         "${CMAKE_CURRENT_LIST_DIR}/cmake/Hunter/passwords.cmake"
