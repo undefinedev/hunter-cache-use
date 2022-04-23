@@ -26,11 +26,11 @@ jobs:
           cmake -H. -B_builds -DHUNTER_STATUS_DEBUG=ON -DHUNTER_CONFIGURATION_TYPES=Release
           cmake --build _builds --config Release
         env:
-          GITHUB_USER_PASSWORD: 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
+          GITHUB_USER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
 
       - name: upload2
         run: |
           cmake -H. -B_builds -DHUNTER_STATUS_DEBUG=ON -DHUNTER_CONFIGURATION_TYPES=Debug
           cmake --build _builds --config Debug
         env:
-          GITHUB_USER_PASSWORD: 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
+          GITHUB_USER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
