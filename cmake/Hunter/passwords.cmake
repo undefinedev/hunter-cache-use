@@ -1,6 +1,6 @@
 hunter_upload_password(
         # REPO_OWNER + REPO = https://github.com/undefinedev/hunter-cache
-        REPO_OWNER "udnefinedev"
+        REPO_OWNER "undefinedev"
         REPO "hunter-cache"
 
         # USERNAME = https://github.com/defineddev
