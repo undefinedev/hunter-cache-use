@@ -1,5 +1,5 @@
 environment:
-  my_variable:
+  global:
     GITHUB_USER_PASSWORD:
       secure: qGJ+1HNJV6ui0bH1F7bZ1f+bmXPesdzGa2iWclyohd3O9jwyRwbh63wfl0i/prS6
 
