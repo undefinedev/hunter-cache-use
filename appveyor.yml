@@ -1,0 +1,25 @@
+environment:
+  my_variable:
+    GITHUB_USER_PASSWORD:
+      secure: qGJ+1HNJV6ui0bH1F7bZ1f+bmXPesdzGa2iWclyohd3O9jwyRwbh63wfl0i/prS6
+
+  matrix:
+    - TYPE: Release
+    - TYPE: Debug
+
+install:
+  # Python 3
+  - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%
+
+  # Install Python package 'requests'
+  - cmd: pip install requests
+
+build_script:
+  - cmd: cmake -H. -B_builds -DHUNTER_STATUS_DEBUG=ON -DHUNTER_CONFIGURATION_TYPES=%TYPE%
+  - cmd: cmake --build _builds --config %TYPE%
+
+# http://www.appveyor.com/docs/branches#white-and-blacklisting
+# Exclude branch 'pkg.template'. Nothing to build there.
+branches:
+  except:
+    - /^pr\..*/
