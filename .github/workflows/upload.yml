@@ -15,7 +15,7 @@ jobs:
 
       - name: python
         run: |
-          set PATH=C:\Python310-x64;C:\Python310-x64\Scripts;%PATH%
+          python --version
           pip install --upgrade pip
           pip install requests
           pip list
