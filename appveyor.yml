@@ -13,7 +13,7 @@ install:
 
   # Install Python package 'requests'
   - cmd: python --version
-  - cmd: python3 -m pip install requests
+  - cmd: python -m pip install requests
   - cmd: pip list
 
 build_script:
