@@ -33,4 +33,4 @@ jobs:
           cmake -H. -B_builds -DHUNTER_STATUS_DEBUG=ON -DHUNTER_CONFIGURATION_TYPES=Debug
           cmake --build _builds --config Debug
         env:
-          GITHUB_USER_PASSWORD: qGJ+1HNJV6ui0bH1F7bZ1f+bmXPesdzGa2iWclyohd3O9jwyRwbh63wfl0i/prS6
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
