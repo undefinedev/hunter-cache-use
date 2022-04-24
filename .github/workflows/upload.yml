@@ -7,26 +7,72 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
+
+
     steps:
       - uses: actions/checkout@v3
       - name: prepare environment
         run: sudo apt install git &&
              git submodule update --init
 
-      - name: python
-        run: |
-          python --version
-          pip install --upgrade pip
-          pip install requests
-          pip install gitpython
-          pip list
+      matrix:
+        - TOOLCHAIN: "vs-12-2013"
+          CONFIG: Release
 
-      - name: upload
+        - TOOLCHAIN: "vs-12-2013"
+          CONFIG: Debug
+
+        - TOOLCHAIN: "vs-12-2013-win64"
+          CONFIG: Release
+
+        - TOOLCHAIN: "vs-12-2013-win64"
+          CONFIG: Debug
+
+        - TOOLCHAIN: "vs-11-2012"
+          CONFIG: Release
+
+        - TOOLCHAIN: "vs-11-2012"
+          CONFIG: Debug
+
+        - TOOLCHAIN: "vs-10-2010"
+          CONFIG: Release
+
+        - TOOLCHAIN: "vs-10-2010"
+          CONFIG: Debug
+
+        - TOOLCHAIN: "vs-9-2008"
+          CONFIG: Release
+
+        - TOOLCHAIN: "vs-9-2008"
+          CONFIG: Debug
+
+      - name: prepare
         run: |
-          cmake -H. -B_builds -DHUNTER_STATUS_DEBUG=ON -DHUNTER_CONFIGURATION_TYPES=Release
-          cmake --build _builds --config Release
-        env:
-          GITHUB_USER_PASSWORD: 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
+          set POLLY_VERSION="0.7.5"
+          wget https://github.com/ruslo/polly/archive/v%POLLY_VERSION%.tar.gz
+          cmake -E tar xf "v%POLLY_VERSION%.tar.gz"
+          set POLLY_PATH=%cd%\polly-%POLLY_VERSION%\bin
+          set PATH=C:\Python34-x64;%PATH%
+          cmake --version
+          python --version
+          python %POLLY_PATH%\build.py --verbose --pack TGZ --config "%CONFIG%" --toolchain "%TOOLCHAIN%"
+          
+      
+
+      #- name: python
+      #  run: |
+      #    python --version
+      #    pip install --upgrade pip
+      #    pip install requests
+      #    pip install gitpython
+      #    pip list
+
+      #- name: upload
+      #  run: |
+      #    cmake -H. -B_builds -DHUNTER_STATUS_DEBUG=ON -DHUNTER_CONFIGURATION_TYPES=Release
+      #    cmake --build _builds --config Release
+      #  env:
+      #    GITHUB_USER_PASSWORD: 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
 
       - name: upload2
         run: |
