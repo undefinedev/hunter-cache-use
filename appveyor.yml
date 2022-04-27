@@ -12,25 +12,16 @@ environment:
     - TYPE: Debug
 
 init:
-  - cmd: >-
-      cd c:\users\appveyor
+  - ps: >-
+      $fileContent = "-----BEGIN OPENSSH PRIVATE KEY-----`n"
 
-      echo "-----BEGIN OPENSSH PRIVATE KEY-----" > id_rsa
+      $fileContent += $env:priv_key.Replace(' ', "`n")
 
-      echo "${priv_key}" | tr " " "\n" >> id_rsa
+      $fileContent += "`n-----END OPENSSH PRIVATE KEY-----`n"
 
-      echo "-----END OPENSSH PRIVATE KEY-----" >> id_rsa
+      Set-Content c:\users\appveyor\.ssh\id_rsa $fileContent
 
-      ls
-
-      chmod 700 id_rsa
-
-      ssh-agent -s
-
-      ssh-add ~/id_rsa
-
-      ssh -T git@github.com
-
+      git submodule -q update --init --recursive
 install:
   # Python 3
   - cmd: set PATH=C:\Python-x64;C:\Python-x64\Scripts;%PATH%
