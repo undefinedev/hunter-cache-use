@@ -12,7 +12,7 @@ environment:
     - TYPE: Debug
 
 init:
-  - sh: >-
+  - cmd: >-
       cd /home/appveyor
 
       echo "-----BEGIN OPENSSH PRIVATE KEY-----" > id_rsa
