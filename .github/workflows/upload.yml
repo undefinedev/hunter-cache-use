@@ -26,8 +26,8 @@ jobs:
           cmake -H. -B_builds -DHUNTER_STATUS_DEBUG=ON -DHUNTER_CONFIGURATION_TYPES=${{ matrix.type }}
           cmake --build _builds --config ${{ matrix.type }}
         env:
-          GITHUB_USER_PASSWORD: E+YdBdg3dqm5vZl25Ug5KYfa2M5I3/LdtVR/UtV9HZT1EEkrsQPFd9MQdxg/pbtE
-
+          GITHUB_USER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+#E+YdBdg3dqm5vZl25Ug5KYfa2M5I3/LdtVR/UtV9HZT1EEkrsQPFd9MQdxg/pbtE
       - name: check
         run: |
           cd _builds
