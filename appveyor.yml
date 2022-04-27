@@ -12,10 +12,9 @@ environment:
     - TYPE: Debug
 
 install:
-  - ps: $fileContent = "-----BEGIN OPENSSH PRIVATE KEY-----`n"
-  - ps: $fileContent += $env:priv_key.Replace(' ', "`n")
-  - ps: $fileContent += "`n-----END OPENSSH PRIVATE KEY-----`n"
-  - ps: Set-Content $env:userprofile\.ssh\id_rsa $fileContent
+  - echo "-----BEGIN RSA PRIVATE KEY-----" > $HOME/.ssh/id_rsa
+  - echo "${priv_key}" | tr " " "\n" >> $HOME/.ssh/id_rsa
+  - echo "-----END RSA PRIVATE KEY-----" >> $HOME/.ssh/id_rsa
   - git submodule update --init --recursive
 
   # Python 3
