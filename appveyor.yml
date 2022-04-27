@@ -1,88 +1,27 @@
-#environment:
-#  global:
-#    GITHUB_USER_PASSWORD:
-#      secure: qGJ+1HNJV6ui0bH1F7bZ1f+bmXPesdzGa2iWclyohd3O9jwyRwbh63wfl0i/prS6
-#
-#  matrix:
-#    - TYPE: Release
-#    - TYPE: Debug
-#
-#install:
-#  # Python 3
-#  - cmd: set PATH=C:\Python310-x64;C:\Python310-x64\Scripts;%PATH%
-#
-#  # Install Python package 'requests'
-#  - cmd: python --version
-#  - cmd: C:\Python310-x64\python.exe -m pip install --upgrade pip
-#  - cmd: pip3.10 install requests
-#  - cmd: pip3.10 install requests
-#  - cmd: pip list
-#
-#build_script:
-#  - cmd: cmake -H. -B_builds -DHUNTER_STATUS_DEBUG=ON -DHUNTER_CONFIGURATION_TYPES=%TYPE%
-#  - cmd: cmake --build _builds --config %TYPE%
-#
-## http://www.appveyor.com/docs/branches#white-and-blacklisting
-## Exclude branch 'pkg.template'. Nothing to build there.
-#branches:
-#  except:
-#    - /^pr\..*/
-
+# Windows (https://github.com/travis-ci-tester/toolchain-table)
 
 environment:
+  global:
+    GITHUB_USER_PASSWORD:
+      secure: E+YdBdg3dqm5vZl25Ug5KYfa2M5I3/LdtVR/UtV9HZT1EEkrsQPFd9MQdxg/pbtE
+
   matrix:
-    - TOOLCHAIN: "vs-12-2013"
-      CONFIG: Release
-
-    - TOOLCHAIN: "vs-12-2013"
-      CONFIG: Debug
-
-    - TOOLCHAIN: "vs-12-2013-win64"
-      CONFIG: Release
-
-    - TOOLCHAIN: "vs-12-2013-win64"
-      CONFIG: Debug
-
-    - TOOLCHAIN: "vs-11-2012"
-      CONFIG: Release
-
-    - TOOLCHAIN: "vs-11-2012"
-      CONFIG: Debug
-
-    - TOOLCHAIN: "vs-10-2010"
-      CONFIG: Release
-
-    - TOOLCHAIN: "vs-10-2010"
-      CONFIG: Debug
-
-    - TOOLCHAIN: "vs-9-2008"
-      CONFIG: Release
-
-    - TOOLCHAIN: "vs-9-2008"
-      CONFIG: Debug
+    - TYPE: Release
+    - TYPE: Debug
 
 install:
-  - cmd: set POLLY_VERSION="0.7.5"
-  - cmd: appveyor DownloadFile "https://github.com/ruslo/polly/archive/v%POLLY_VERSION%.tar.gz"
-  - cmd: cmake -E tar xf "v%POLLY_VERSION%.tar.gz"
-  - cmd: set POLLY_PATH=%cd%\polly-%POLLY_VERSION%\bin
-  - cmd: set PATH=C:\Python34-x64;%PATH%
-  - cmd: cmake --version
-  - cmd: python --version
+  # Python 3
+  - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%
+
+  # Install Python package 'requests'
+  - cmd: pip install requests
 
 build_script:
-  - cmd: python %POLLY_PATH%\build.py --verbose --pack TGZ --config "%CONFIG%" --toolchain "%TOOLCHAIN%"
+  - cmd: cmake -H. -B_builds -DHUNTER_STATUS_DEBUG=ON -DHUNTER_CONFIGURATION_TYPES=%TYPE%
+  - cmd: cmake --build _builds --config %TYPE%
 
-artifacts:
-  - path: _builds\*\Foo-*.tar.gz
-    name: Releases
-
-deploy:
-  provider: GitHub
-  auth_token:
-    secure: "RIrLXm/iw/gOK/mJ7m1Z1uDln9/aUqtIOKqMI0H0UlgkkIdRa2O7NeQ575F7Erm4"
-  artifact: /Foo-.*\.tar.gz/
-  draft: false
-  prerelease: false
-  on:
-    appveyor_repo_tag: true
+# http://www.appveyor.com/docs/branches#white-and-blacklisting
+# Exclude branch 'pkg.template'. Nothing to build there.
+branches:
+  except:
+    - /^pr\..*/
