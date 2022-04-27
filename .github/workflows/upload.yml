@@ -22,7 +22,7 @@ jobs:
           pip install gitpython
       - name: upload
         run: |
-          cmake -H. -B_builds -DHUNTER_STATUS_DEBUG=ON -DHUNTER_CONFIGURATION_TYPES=${{ matrix.type }}
-          cmake --build _builds --config ${{ matrix.type }}
+          cmake -H. -B_builds -DHUNTER_STATUS_DEBUG=ON -DHUNTER_CONFIGURATION_TYPES=Release
+          cmake --build _builds --config Release
         env:
           GITHUB_USER_PASSWORD: ${{ secrets.hunter }}
