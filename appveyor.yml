@@ -16,6 +16,7 @@ install:
   # Install Python package 'requests'
   - cmd: python -m pip install --upgrade pip
   - cmd: pip3.10 install requests
+  - cmd: pip3.10 install gitpython
   - cmd: pip list
 
 build_script:
