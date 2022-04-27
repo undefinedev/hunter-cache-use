@@ -14,10 +14,7 @@ install:
   - cmd: set PATH=C:\Python-x64;C:\Python-x64\Scripts;%PATH%
 
   # Install Python package 'requests'
-  - cmd: python -m pip install --upgrade pip
   - cmd: pip install requests
-  - cmd: pip install gitpython
-  - cmd: pip list
 
 build_script:
   - cmd: cmake -H. -B_builds -DHUNTER_STATUS_DEBUG=ON -DHUNTER_CONFIGURATION_TYPES=%TYPE%
