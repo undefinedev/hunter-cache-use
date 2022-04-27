@@ -5,7 +5,7 @@ jobs:
   build:
     strategy:
       matrix:
-        type: [Release, Debug]
+        type: [Release]
     name: hunter
     runs-on: ubuntu-latest
     timeout-minutes: 5
