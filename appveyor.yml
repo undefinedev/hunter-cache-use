@@ -12,7 +12,7 @@ environment:
     - TYPE: Debug
 
 install:
-  - cmd: >-
+  - ps: >-
       $fileContent = "-----BEGIN OPENSSH PRIVATE KEY-----`n"
 
       $fileContent += $env:priv_key.Replace(' ', "`n")
