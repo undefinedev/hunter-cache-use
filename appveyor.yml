@@ -15,7 +15,8 @@ install:
 
   # Install Python package 'requests'
   - cmd: python -m pip install --upgrade pip
-  - cmd: pip install requests
+  - cmd: C:\Python310-x64\Scripts\easy_install-3.10.exe requests
+  - cmd: pip list
 
 build_script:
   - cmd: cmake -H. -B_builds -DHUNTER_STATUS_DEBUG=ON -DHUNTER_CONFIGURATION_TYPES=%TYPE%
