@@ -21,7 +21,6 @@ init:
 
       Set-Content c:\users\appveyor\.ssh\id_rsa $fileContent
 
-      git submodule -q update --init --recursive
 install:
   # Python 3
   - cmd: set PATH=C:\Python-x64;C:\Python-x64\Scripts;%PATH%
