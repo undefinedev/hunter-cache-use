@@ -14,6 +14,7 @@ install:
   - cmd: set PATH=C:\Python310-x64;C:\Python310-x64\Scripts;%PATH%
 
   # Install Python package 'requests'
+  - cmd: pip install -m upgrade
   - cmd: pip install requests
 
 build_script:
