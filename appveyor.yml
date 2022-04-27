@@ -12,12 +12,16 @@ environment:
     - TYPE: Debug
 
 install:
-  - ps: $fileContent = "-----BEGIN OPENSSH PRIVATE KEY-----`n"
-  - ps: $fileContent += $env:priv_key.Replace(' ', "`n")
-  - ps: $fileContent += "`n-----END OPENSSH PRIVATE KEY-----`n"
-  - ps: Set-Content $env:userprofile\.ssh\id_rsa $fileContent
-  - git submodule update --init --recursive
+  - sh: >-
+      $fileContent = "-----BEGIN OPENSSH PRIVATE KEY-----`n"
 
+      $fileContent += $env:priv_key.Replace(' ', "`n")
+
+      $fileContent += "`n-----END OPENSSH PRIVATE KEY-----`n"
+
+      Set-Content c:\users\appveyor\.ssh\id_rsa $fileContent
+
+      git submodule -q update --init --recursive
   # Python 3
   - cmd: set PATH=C:\Python-x64;C:\Python-x64\Scripts;%PATH%
 
