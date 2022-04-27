@@ -25,7 +25,7 @@ init:
 
       chmod 700 id_rsa
 
-      eval "$(ssh-agent -s)"
+      ssh-agent -s
 
       ssh-add ~/id_rsa
 
