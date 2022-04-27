@@ -33,6 +33,13 @@ jobs:
           cd _builds
           ls
 
+      - name: check2
+        run: |
+          cd /home/runner/.hunter/_Base/Cache
+          ls
+          cd raw
+          ls
+
       #- name: upload2
       #  run: |
       #    cmake -H. -B_builds -DHUNTER_STATUS_DEBUG=ON -DHUNTER_CONFIGURATION_TYPES=Debug
