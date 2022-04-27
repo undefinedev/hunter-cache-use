@@ -11,12 +11,12 @@ environment:
 
 install:
   # Python 3
-  - cmd: set PATH=C:\Python310-x64;C:\Python310-x64\Scripts;%PATH%
+  - cmd: set PATH=C:\Python-x64;C:\Python-x64\Scripts;%PATH%
 
   # Install Python package 'requests'
   - cmd: python -m pip install --upgrade pip
-  - cmd: pip3.10 install . requests
-  - cmd: pip3.10 install . gitpython
+  - cmd: pip install . requests
+  - cmd: pip install . gitpython
   - cmd: pip list
 
 build_script:
