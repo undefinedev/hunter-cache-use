@@ -3,9 +3,9 @@ on: [push]
 
 jobs:
   build:
-    strategy:
-      matrix:
-        type: [Release, Debug]
+    #strategy:
+    #  matrix:
+    #    type: [Release, Debug]
     name: hunter
     runs-on: ubuntu-latest
     timeout-minutes: 5
