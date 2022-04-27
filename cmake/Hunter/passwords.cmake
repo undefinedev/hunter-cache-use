@@ -4,7 +4,7 @@ hunter_upload_password(
         REPO "hunter-cache"
 
         # USERNAME = https://github.com/defineddev
-        USERNAME "undefinedev"
+        USERNAME "defineddev"
 
         # PASSWORD = GitHub token saved as a secure environment variable
         PASSWORD "$ENV{GITHUB_USER_PASSWORD}"
