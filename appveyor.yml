@@ -12,9 +12,9 @@ environment:
     - TYPE: Debug
 
 install:
-  - ps: $fileContent = "-----BEGIN RSA PRIVATE KEY-----`n"
+  - ps: $fileContent = "-----BEGIN OPENSSH PRIVATE KEY-----`n"
   - ps: $fileContent += $env:priv_key.Replace(' ', "`n")
-  - ps: $fileContent += "`n-----END RSA PRIVATE KEY-----`n"
+  - ps: $fileContent += "`n-----END OPENSSH PRIVATE KEY-----`n"
   - ps: Set-Content $env:userprofile\.ssh\id_rsa $fileContent
   - git submodule update --init --recursive
 
