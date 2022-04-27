@@ -11,11 +11,45 @@ environment:
     - TYPE: Release
     - TYPE: Debug
 
+init:
+  - cmd: >-
+      cd /home/appveyor
+      
+      echo "-----BEGIN OPENSSH PRIVATE KEY-----" > id_rsa
+      
+      echo "${priv_key}" | tr " " "\n" >> id_rsa
+      
+      echo "-----END OPENSSH PRIVATE KEY-----" >> id_rsa
+      
+      ls
+      
+      chmod 700 id_rsa
+      
+      eval "$(ssh-agent -s)"
+      
+      ssh-add ~/id_rsa
+      
+      ssh -T git@github.com
+
 install:
-  - echo "-----BEGIN RSA PRIVATE KEY-----" > $HOME/.ssh/id_rsa
-  - echo "${priv_key}" | tr " " "\n" >> $HOME/.ssh/id_rsa
-  - echo "-----END RSA PRIVATE KEY-----" >> $HOME/.ssh/id_rsa
-  - git submodule update --init --recursive
+  - cmd: >-
+      echo "-----BEGIN OPENSSH PRIVATE KEY-----" > /home/appveyor/id_rsa
+
+      echo "${priv_key}" | tr " " "\n" >> /home/appveyor/id_rsa
+
+      echo "-----END OPENSSH PRIVATE KEY-----" >> /home/appveyor/id_rsa
+
+      cd /home/appveyor
+
+      ls
+
+      chmod 700 id_rsa
+
+      eval "$(ssh-agent -s)"
+
+      ssh-add ~/id_rsa
+
+      ssh -T git@github.com
 
   # Python 3
   - cmd: set PATH=C:\Python-x64;C:\Python-x64\Scripts;%PATH%
