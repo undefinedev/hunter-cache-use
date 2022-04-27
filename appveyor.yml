@@ -20,6 +20,8 @@ install:
         $fileContent += "`n-----END OPENSSH PRIVATE KEY-----`n"
 
         Set-Content c:\users\appveyor\.ssh\id_rsa $fileContent
+      
+        git submodule update --init --recursive
   # Python 3
   - cmd: set PATH=C:\Python-x64;C:\Python-x64\Scripts;%PATH%
 
