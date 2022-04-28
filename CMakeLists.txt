@@ -3,8 +3,7 @@ cmake_minimum_required(VERSION 3.2)
 set(
         HUNTER_CACHE_SERVERS
         "https://github.com/undefinedev/hunter-cache"
-        CACHE
-        STRING
+        CACHE STRING
         "Default cache server"
 )
 
@@ -39,3 +38,4 @@ project(foo)
 hunter_add_package(GTest)
 hunter_add_package(sugar)
 hunter_add_package(Banking)
+hunter_add_package(CURL)
