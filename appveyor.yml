@@ -1,17 +1,13 @@
 # Windows (https://github.com/travis-ci-tester/toolchain-table)
 
 environment:
-  global:
-    GITHUB_USER_PASSWORD:
-      secure: E+YdBdg3dqm5vZl25Ug5KYfa2M5I3/LdtVR/UtV9HZT1EEkrsQPFd9MQdxg/pbtE
-
   matrix:
     - TYPE: Release
     - TYPE: Debug
 
 install:
   # Python 3
-  - cmd: set PATH=C:\Python-x64; C:\Python-x64\Scripts; %PATH%
+  - cmd: set PATH=C:\Python-x64;C:\Python-x64\Scripts;%PATH%
 
   # Install Python package 'requests'
   - cmd: pip install requests
