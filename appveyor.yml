@@ -11,6 +11,7 @@ install:
 
   # Install Python package 'requests'
   - cmd: pip install requests
+  - cmd: pip install gitpython
 
 build_script:
   - cmd: cmake -H. -B_builds -DHUNTER_STATUS_DEBUG=ON -DHUNTER_CONFIGURATION_TYPES=%TYPE%
