@@ -1,5 +1,8 @@
 # Windows (https://github.com/travis-ci-tester/toolchain-table)
 
+image:
+  - Visual Studio 2022
+  - macOS-Monterey
 environment:
   GITHUB_USER_PASSWORD:
     secure: M/8NPK94UTSRMO1reIluuYJsqiLCZS5jH5E+Lqm9+126+QLDd1fuQF9QZP7vJy+b
