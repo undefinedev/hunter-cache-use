@@ -11,7 +11,7 @@ environment:
 
 install:
   # Python 3
-  - cmd: set PATH=C:\Python-x64;C:\Python-x64\Scripts;%PATH%
+  - cmd: set PATH=C:\Python-x64; C:\Python-x64\Scripts; %PATH%
 
   # Install Python package 'requests'
   - cmd: pip install requests
