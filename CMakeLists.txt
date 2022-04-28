@@ -15,7 +15,7 @@ string(COMPARE EQUAL "$ENV{APPVEYOR}" "True" is_appveyor)
 
 string(COMPARE EQUAL "$ENV{GITHUB_USER_PASSWORD}" "" password_is_empty)
 
-if(NOT password_is_empty)
+if(is_appveyor AND NOT password_is_empty)
     option(HUNTER_RUN_UPLOAD "Upload cache binaries" ON)
 endif()
 
